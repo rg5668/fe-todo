@@ -1,37 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FE Boilerplate
 
-## Getting Started
+## 목적
 
-First, run the development server:
+매번 새로운 프론트엔드 프로젝트를 시작할 때마다 의존성, 설정, 버전을 처음부터 맞추는 것은 시간이 많이 소요되고 비효율적일 수 있습니다. 이 보일러플레이트는 필수 패키지와 설정을 동일한 버전으로 통일하여, 프로젝트 시작 시 빠르고 안정적인 환경을 제공하도록 설계되었습니다.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 사용 방법
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+1. 저장소를 클론합니다.
+2. `npm install` 명령어로 의존성을 설치합니다.
+3. 아래 명령어들을 통해 개발, 빌드 및 기타 작업을 수행할 수 있습니다.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 스크립트
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `dev`: Next.js 개발 서버를 실행합니다.
+- `build`: 프로젝트를 빌드합니다.
+- `start`: Next.js 빌드한 서버를 시작합니다.
+- `lint`: ESLint로 코드 스타일을 체크합니다.
+- `format`: Prettier를 사용하여 코드 스타일을 검사합니다.
+- `format:fix`: Prettier로 코드 스타일을 자동으로 수정합니다.
 
-## Learn More
+## 주요 패키지 및 버전
 
-To learn more about Next.js, take a look at the following resources:
+- **Next.js**: `15.0.3`
+- **React**: `19.0.0-rc`
+- **shadcn UI (Radix UI)**: 다양한 UI 컴포넌트 (@radix-ui/react-accordion 등)
+- **React Query**: `@tanstack/react-query ^5.60.2`
+- **Tailwind CSS**: `^3.4.1`
+- **TypeScript**: `^5`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 의존성 정보
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+프로젝트의 모든 패키지와 버전은 `package.json`에 정의되어 있습니다. 각 버전은 안정적이며 최신 기능을 반영하도록 선택되었습니다.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-# fe-boilerplate
+---
