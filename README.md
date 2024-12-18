@@ -21,8 +21,8 @@
 
 ## 주요 패키지 및 버전
 
-- **Next.js**: `15.0.3`
-- **React**: `19.0.0-rc`
+- **Next**: `14.2.2`
+- **React**: `18.3.1`
 - **shadcn UI (Radix UI)**: 다양한 UI 컴포넌트 (@radix-ui/react-accordion 등)
 - **React Query**: `@tanstack/react-query ^5.60.2`
 - **Tailwind CSS**: `^3.4.1`
