@@ -173,7 +173,7 @@ export const todoEndpoints = [
     path: '/api/todos',
     summary: 'Todo 목록 조회',
     description:
-      '쿠키에 저장된 userId에 따라 사용자의 Todo 목록을 조회합니다. 쿼리 파라미터로 `all`(전체 조회), `limit`(불러올 항목 수), `offset`(건너뛸 시작 인덱스)을 지원합니다.',
+      '쿠키에 저장된 userId에 따라 사용자의 Todo 목록을 조회합니다. 쿼리 파라미터로 `all`(전체 조회), `limit`(불러올 항목 수), `offset`(건너뛸 시작 인덱스)을 지원합니다. 필터기능 completed 파라미터를 통해 완료 여부(true 또는 false)에 따른 Todo 목록 필터링을 지원합니다. keyword 파라미터를 통해 title 또는 description에 특정 문자열이 포함된 Todo 항목만 검색할 수 있도록 합니다.',
     parameters: [
       {
         name: 'all',
@@ -201,6 +201,24 @@ export const todoEndpoints = [
           example: 0,
         },
         description: '데이터를 건너뛸 시작 인덱스 (기본값: 0)',
+      },
+      {
+        name: 'completed',
+        in: 'query',
+        schema: {
+          type: 'string',
+          example: 'false',
+        },
+        description: '완료 여부',
+      },
+      {
+        name: 'keyword',
+        in: 'query',
+        schema: {
+          type: 'string',
+          example: '검색어',
+        },
+        description: '검색',
       },
     ],
     responses: [
@@ -689,7 +707,7 @@ export const flowDiagramMermaid = `flowchart TD
     C -- "이메일: newuser@example.com\\n비밀번호: password123\\n이름: New User" --> D
 
     %% Todo 엔드포인트
-    D --> E[GET /api/todos\\n(all=true, limit=10, offset=0)]
+    D --> E[GET /api/todos\\n(all=true, limit=10, offset=0, completed=false, keyword='')]
     D --> F[POST /api/todos]
     D --> G[GET /api/todos/{id}\\n(id: 101)]
     D --> H[PATCH /api/todos/{id}\\n(id: 101)]

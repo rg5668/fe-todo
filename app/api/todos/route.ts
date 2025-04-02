@@ -5,23 +5,38 @@ import { cookies } from 'next/headers';
 export async function GET(request: Request) {
   const supabase = createClient();
   const { searchParams } = new URL(request.url);
+
   const all = searchParams.get('all');
   const limitParam = searchParams.get('limit');
   const offsetParam = searchParams.get('offset');
+  const completedParam = searchParams.get('completed'); // 'true' | 'false'
+  const keyword = searchParams.get('keyword'); // 키워드 검색
 
   const cookieStore = await cookies();
   const userId = cookieStore.get('userId')?.value;
 
-  // 기본 쿼리: 전체 todos를 가져오되 count 옵션 추가
   let query = supabase.from('todos').select('*', { count: 'exact' });
 
+  // 로그인한 사용자일 경우 필터링, 아닐 경우 전체 반환
   if (all === 'true' || !userId) {
     query = query.order('created_at', { ascending: false });
   } else {
     query = query.eq('user_id', userId).order('created_at', { ascending: false });
   }
 
-  // limit 옵션이 있을 경우에만 페이지네이션 처리
+  // ✅ 필터: completed
+  if (completedParam === 'true') {
+    query = query.eq('completed', true);
+  } else if (completedParam === 'false') {
+    query = query.eq('completed', false);
+  }
+
+  // ✅ 필터: keyword 검색 (title 또는 description 포함)
+  if (keyword) {
+    query = query.or(`title.ilike.%${keyword}%,description.ilike.%${keyword}%`);
+  }
+
+  // ✅ 페이지네이션 처리
   if (limitParam !== null) {
     const limit = parseInt(limitParam, 10);
     if (isNaN(limit) || limit < 1) {
