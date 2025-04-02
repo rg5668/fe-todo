@@ -8,10 +8,10 @@ export default function Home() {
     <div className="grid grid-rows-[auto_1fr_auto] justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
       <h1 className="text-2xl font-bold">MAIN</h1>
       <div className="flex gap-8">
-        <Link href="/api-docs" passHref>
+        <Link href="/docs/api">
           <Button variant="default">API Docs</Button>
         </Link>
-        <Link href="/requirements" passHref>
+        <Link href="/docs/requirements">
           <Button variant="outline">Requirements</Button>
         </Link>
       </div>

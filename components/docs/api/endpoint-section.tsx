@@ -1,4 +1,4 @@
-import EndpointItem from '@/components/api-docs/endpoint-item';
+import EndpointItem from '@/components/docs/api/endpoint-item';
 import { EndpointSectionProps } from '@/interfaces/api-docs.interface';
 
 export default function EndpointSection({ title, endpoints }: EndpointSectionProps) {
